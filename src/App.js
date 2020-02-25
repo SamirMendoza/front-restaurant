@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './styles/App.css';
+import Header from './components/Header.js';
+import TablesList from './components/TablesList';
+import ReservationsList from './components/ReservationsList'
 
-function App() {
+function Element(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="element">
+      <div>{props.name}</div>
+      {props.children}
     </div>
-  );
+  )
+}
+
+class App extends Component{
+
+  constructor(){
+    super();
+    this.state={
+      updateValue:false
+    }
+    this.updateCountValue=this.updateCountValue.bind(this);
+  }
+
+  updateCountValue(value){
+    this.setState({
+      updateValue:value
+    });
+  }
+
+  render(){
+    return (
+     <div>
+       <Header/>
+       <div className="App-content">
+          <Element name="Mesas">
+            <TablesList/>
+          </Element>
+          <Element name="Reservas">
+            <ReservationsList updateCountContainer={this.updateCountValue} shouldUpdate={this.state.updateValue}/>
+          </Element>
+        </div>
+      </div>  
+    );
+  }
 }
 
 export default App;

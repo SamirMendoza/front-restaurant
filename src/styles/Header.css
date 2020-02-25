@@ -1,0 +1,21 @@
+/*
+ * Header
+ */
+ .masthead {
+    background-color: #282c34;
+    padding: 7px 12px;
+    min-height: 8vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .avatar {
+    vertical-align: middle;
+    height: 20vmin;
+    border-radius: 30%;
+    pointer-events: none;
+  }
